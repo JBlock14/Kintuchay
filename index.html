@@ -113,12 +113,12 @@
   </div>
 
   <div id="main-content">
-    <img id="logo" src="assets/logo1.png" alt="Logo" onclick="launchSiteAndMusic()" />
+    <img id="logo" src="assets/logo1.png" alt="Logo" onclick="launchSiteAndSound()" />
     <div id="welcome-text">WELCOME</div>
   </div>
 
-  <!-- 🎵 Reproductor invisible -->
-  <audio id="music" autoplay loop></audio>
+  <!-- 🎵 Audio local -->
+  <audio id="soundFX"></audio>
 
   <script>
     const video = document.getElementById("intro-video");
@@ -131,27 +131,24 @@
       main.style.display = "block";
     });
 
-    const tracks = [
+    const soundFX = document.getElementById("soundFX");
+    const clips = [
       "assets/mussic/1.mp3",
       "assets/mussic/2.mp3",
       "assets/mussic/3.mp3"
     ];
 
-    function playRandomMusic() {
-      const audio = document.getElementById("music");
-      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
-      audio.src = randomTrack;
-      audio.load();
-      audio.play().catch(() => {
-        console.warn("Autoplay bloqueado por el navegador.");
+    function launchSiteAndSound() {
+      const random = clips[Math.floor(Math.random() * clips.length)];
+      soundFX.src = random;
+      soundFX.play().catch(() => {
+        console.warn("El navegador bloqueó el audio.");
       });
 
-      audio.addEventListener("ended", playRandomMusic);
-    }
-
-    function launchSiteAndMusic() {
-      playRandomMusic();
-      window.open("web.html", "_blank");
+      // Espera 300 ms antes de redirigir
+      setTimeout(() => {
+        window.location.href = "web.html";
+      }, 300);
     }
   </script>
 
