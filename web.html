@@ -18,29 +18,40 @@
       font-family: sans-serif;
     }
 
-    /* Fuerza el widget de música a ser completamente invisible */
-    .elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517,
-    .elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517 * {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      width: 0 !important;
-      height: 0 !important;
-      pointer-events: none !important;
-      position: absolute !important;
-      top: -9999px !important;
-      left: -9999px !important;
-      z-index: -9999 !important;
+    /* Oculta el reproductor */
+    #music {
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Aquí podrías colocar el contenido visible de tu app -->
+  <!-- Reproductor invisible -->
+  <audio id="music" autoplay loop></audio>
 
-  <!-- Reproductor de música Elfsight oculto -->
-  <script src="https://static.elfsight.com/platform/platform.js" async></script>
-  <div class="elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517" data-elfsight-app-lazy></div>
+  <script>
+    const music = document.getElementById("music");
+    const tracks = [
+      "assets/mussic/1.mp3",
+      "assets/mussic/2.mp3",
+      "assets/mussic/3.mp3"
+    ];
+
+    function playRandomTrack() {
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      music.src = randomTrack;
+      music.load();
+      music.play().catch(() => {
+        console.warn("Autoplay bloqueado por el navegador. Espera interacción.");
+      });
+    }
+
+    // Inicia reproducción
+    playRandomTrack();
+
+    // Cuando una pista termina, escoge otra
+    music.addEventListener("ended", playRandomTrack);
+  </script>
 
 </body>
 </html>
