@@ -18,23 +18,25 @@
       font-family: sans-serif;
     }
 
-    /* Fuerza el widget a ser invisible y sin impacto visual */
-    .elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517 {
-      position: fixed !important;
-      top: -9999px !important;
-      left: -9999px !important;
+    /* Fuerza el widget de música a ser completamente invisible */
+    .elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517,
+    .elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517 * {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
       width: 0 !important;
       height: 0 !important;
-      opacity: 0 !important;
       pointer-events: none !important;
-      visibility: hidden !important;
-      z-index: -1 !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      z-index: -9999 !important;
     }
   </style>
 </head>
 <body>
 
-  <!-- Tu contenido visible aquí -->
+  <!-- Aquí podrías colocar el contenido visible de tu app -->
 
   <!-- Reproductor de música Elfsight oculto -->
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
