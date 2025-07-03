@@ -19,10 +19,11 @@
       overflow: hidden;
     }
 
+    /* Barra de navegación */
     .navbar {
       width: 100%;
       height: 60px;
-      background-color: rgba(153, 0, 0, 0.5); /* rojo carmín transparente */
+      background-color: rgba(153, 0, 0, 0.5);
       display: flex;
       align-items: center;
       padding: 0 20px;
@@ -55,6 +56,7 @@
       }
     }
 
+    /* Ocultar el reproductor */
     audio {
       display: none;
     }
@@ -65,13 +67,13 @@
   <!-- Barra de navegación -->
   <div class="navbar">
     <div class="logo-container" onclick="changeTrack()">
-      <img src="assets/logo2.png" alt="Logo" />
+      <img src="assets/logo2.png" alt="Logo principal" />
       <span class="logo-text">KINTUCHAY</span>
     </div>
   </div>
 
-  <!-- Reproductor de música oculto -->
-  <audio id="music" autoplay loop></audio>
+  <!-- Reproductor invisible -->
+  <audio id="music" autoplay></audio>
 
   <script>
     const music = document.getElementById("music");
@@ -82,8 +84,8 @@
     ];
 
     function playRandomTrack() {
-      const random = tracks[Math.floor(Math.random() * tracks.length)];
-      music.src = random;
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      music.src = randomTrack;
       music.load();
       music.play().catch(() => {
         console.warn("Autoplay bloqueado por el navegador.");
@@ -94,10 +96,10 @@
       playRandomTrack();
     }
 
-    // Reproducir música al cargar
+    // Iniciar al cargar
     playRandomTrack();
 
-    // Reproducir otra aleatoria cuando termine
+    // Cambiar automáticamente al terminar
     music.addEventListener("ended", playRandomTrack);
   </script>
 
