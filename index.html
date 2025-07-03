@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intro Adaptativa</title>
+  <title>Pantalla de Bienvenida</title>
   <style>
     * {
       margin: 0;
@@ -16,6 +16,7 @@
       height: 100%;
       background: black;
       overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .video-wrapper {
@@ -61,15 +62,29 @@
       top: 0;
       left: 0;
       z-index: 2;
+      text-align: center;
     }
 
     #logo {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 200px;
       animation: pulse 2s infinite;
+    }
+
+    #welcome-text {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      animation: rise 1.5s ease-out forwards;
+      opacity: 0;
     }
 
     @keyframes pulse {
@@ -82,6 +97,17 @@
         opacity: 0.85;
       }
     }
+
+    @keyframes rise {
+      0% {
+        transform: translate(-50%, 50%);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -92,6 +118,7 @@
 
   <div id="main-content">
     <img id="logo" src="assets/logo1.png" alt="Logo animado">
+    <div id="welcome-text">BIENVENIDOS</div>
   </div>
 
   <script>
@@ -101,8 +128,8 @@
 
     video.addEventListener("ended", () => {
       video.pause();
-      wrapper.remove(); // elimina la envoltura completa
-      main.style.display = "block"; // muestra fondo y logo
+      wrapper.remove();
+      main.style.display = "block";
     });
   </script>
 
