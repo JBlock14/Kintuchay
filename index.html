@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pantalla de Bienvenida</title>
+  <title>Welcome Screen</title>
   <style>
     * {
       margin: 0;
@@ -62,7 +62,6 @@
       top: 0;
       left: 0;
       z-index: 2;
-      text-align: center;
     }
 
     #logo {
@@ -76,15 +75,21 @@
 
     #welcome-text {
       position: absolute;
-      top: 60%;
+      bottom: 6%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       color: white;
       font-size: 2.2rem;
       font-weight: bold;
       letter-spacing: 2px;
       animation: rise 1.5s ease-out forwards;
       opacity: 0;
+    }
+
+    @media (max-width: 768px) {
+      #welcome-text {
+        font-size: 1.4rem;
+      }
     }
 
     @keyframes pulse {
@@ -100,11 +105,11 @@
 
     @keyframes rise {
       0% {
-        transform: translate(-50%, 50%);
+        transform: translateX(-50%) translateY(50%);
         opacity: 0;
       }
       100% {
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%) translateY(0);
         opacity: 1;
       }
     }
@@ -117,8 +122,8 @@
   </div>
 
   <div id="main-content">
-    <img id="logo" src="assets/logo1.png" alt="Logo animado">
-    <div id="welcome-text">BIENVENIDOS</div>
+    <img id="logo" src="assets/logo1.png" alt="Animated Logo">
+    <div id="welcome-text">WELCOME</div>
   </div>
 
   <script>
