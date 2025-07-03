@@ -11,39 +11,19 @@
       width: 100%;
       height: 100%;
       background: url("assets/fondo2.png");
-      background-size: 16px 16px; /* mosaico nítido para pixel-art */
+      background-size: 16px 16px;
       background-repeat: repeat;
-    }
-
-    #audio-player {
-      display: none;
+      image-rendering: pixelated;
     }
   </style>
 </head>
 <body>
 
-<audio id="audio-player" autoplay loop></audio>
+  <!-- Aquí podría ir tu contenido principal -->
 
-<script>
-  const tracks = [
-    "assets/mussic/1.mp3",
-    "assets/mussic/2.mp3",
-    "assets/mussic/3.mp3"
-  ];
+  <!-- Elfsight Background Music -->
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517" data-elfsight-app-lazy></div>
 
-  const audio = document.getElementById("audio-player");
-
-  function playRandomTrack() {
-    const random = tracks[Math.floor(Math.random() * tracks.length)];
-    audio.src = random;
-    audio.load();
-    audio.play().catch(() => {
-      console.warn("Autoplay bloqueado. Requiere interacción del usuario.");
-    });
-  }
-
-  audio.addEventListener("ended", playRandomTrack);
-  playRandomTrack();
-</script>
 </body>
 </html>
