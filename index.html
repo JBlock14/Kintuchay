@@ -3,38 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intro con Logo</title>
+  <title>Intro Adaptativa</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     html, body {
       width: 100%;
       height: 100%;
       background: black;
       overflow: hidden;
     }
+
+    .video-wrapper {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
     #intro-video {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      height: 100%;
+      width: auto;
       min-width: 100%;
       min-height: 100%;
       object-fit: cover;
-      z-index: 1;
     }
+
+    @media (orientation: portrait) and (max-width: 768px) {
+      #intro-video {
+        width: 200%;
+        height: auto;
+      }
+    }
+
+    @media (orientation: landscape) and (max-width: 768px) {
+      #intro-video {
+        height: 100%;
+        width: auto;
+      }
+    }
+
     #main-content {
       display: none;
       width: 100%;
       height: 100%;
       background: url("assets/fondo1.png") no-repeat center center;
       background-size: cover;
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
       z-index: 2;
     }
+
     #logo {
       position: absolute;
       top: 50%;
@@ -54,37 +82,29 @@
         opacity: 0.85;
       }
     }
-
-    @media (orientation: portrait) and (max-width: 768px) {
-      #intro-video {
-        min-width: 150%;
-        min-height: auto;
-      }
-    }
-
-    @media (orientation: landscape) and (max-width: 768px) {
-      #intro-video {
-        min-height: 100%;
-        min-width: auto;
-      }
-    }
   </style>
 </head>
 <body>
-  <video id="intro-video" src="assets/intro.mp4" autoplay muted playsinline></video>
+
+  <div class="video-wrapper">
+    <video id="intro-video" src="assets/intro.mp4" autoplay muted playsinline></video>
+  </div>
 
   <div id="main-content">
-    <img id="logo" src="assets/logo1.png" alt="Logo animado" />
+    <img id="logo" src="assets/logo1.png" alt="Logo animado">
   </div>
 
   <script>
     const video = document.getElementById("intro-video");
-    const mainContent = document.getElementById("main-content");
+    const main = document.getElementById("main-content");
+    const wrapper = document.querySelector(".video-wrapper");
 
     video.addEventListener("ended", () => {
-      video.remove(); // elimina el video del DOM
-      mainContent.style.display = "block"; // muestra fondo y logo
+      video.pause();
+      wrapper.remove(); // elimina la envoltura completa
+      main.style.display = "block"; // muestra fondo y logo
     });
   </script>
+
 </body>
 </html>
