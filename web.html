@@ -18,20 +18,23 @@
       font-family: sans-serif;
     }
 
-    /* Oculta visualmente el widget de música */
+    /* Fuerza el widget a ser invisible y sin impacto visual */
     .elfsight-app-d563a354-9d25-4e0f-9331-e35daef43517 {
+      position: fixed !important;
+      top: -9999px !important;
+      left: -9999px !important;
       width: 0 !important;
       height: 0 !important;
-      overflow: hidden;
-      position: absolute;
-      pointer-events: none;
-      opacity: 0;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      z-index: -1 !important;
     }
   </style>
 </head>
 <body>
 
-  <!-- Aquí iría tu contenido visible -->
+  <!-- Tu contenido visible aquí -->
 
   <!-- Reproductor de música Elfsight oculto -->
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
