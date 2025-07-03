@@ -2,21 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome Intro</title>
   <style>
-    * {
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
       width: 100%;
       height: 100%;
       background: black;
       overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: sans-serif;
     }
 
     .video-wrapper {
@@ -45,22 +41,12 @@
       }
     }
 
-    @media (orientation: landscape) and (max-width: 768px) {
-      #intro-video {
-        height: 100%;
-        width: auto;
-      }
-    }
-
     #main-content {
       display: none;
-      width: 100%;
-      height: 100%;
+      position: fixed;
+      inset: 0;
       background: url("assets/fondo1.png") center center no-repeat;
       background-size: cover;
-      position: fixed;
-      top: 0;
-      left: 0;
       z-index: 2;
     }
 
@@ -114,6 +100,10 @@
         opacity: 1;
       }
     }
+
+    audio {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -123,9 +113,12 @@
   </div>
 
   <div id="main-content">
-    <img id="logo" src="assets/logo1.png" alt="Animated Logo" onclick="goToWeb()" />
+    <img id="logo" src="assets/logo1.png" alt="Logo" onclick="launchSiteAndMusic()" />
     <div id="welcome-text">WELCOME</div>
   </div>
+
+  <!-- 🎵 Reproductor invisible -->
+  <audio id="music" autoplay loop></audio>
 
   <script>
     const video = document.getElementById("intro-video");
@@ -138,8 +131,27 @@
       main.style.display = "block";
     });
 
-    function goToWeb() {
-      window.location.href = "web.html";
+    const tracks = [
+      "assets/mussic/1.mp3",
+      "assets/mussic/2.mp3",
+      "assets/mussic/3.mp3"
+    ];
+
+    function playRandomMusic() {
+      const audio = document.getElementById("music");
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      audio.src = randomTrack;
+      audio.load();
+      audio.play().catch(() => {
+        console.warn("Autoplay bloqueado por el navegador.");
+      });
+
+      audio.addEventListener("ended", playRandomMusic);
+    }
+
+    function launchSiteAndMusic() {
+      playRandomMusic();
+      window.open("web.html", "_blank");
     }
   </script>
 
