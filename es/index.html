@@ -17,14 +17,15 @@
       font-family: 'Montserrat', sans-serif;
       background: #111 url("../assets/fondo1.png") repeat;
       background-size: 64px 64px;
-      color: #fff;
       image-rendering: pixelated;
+      color: #fff;
       overflow-x: hidden;
     }
 
     .navbar {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       background-color: rgba(0, 0, 0, 1);
       padding: 1rem 2rem;
@@ -102,7 +103,7 @@
 
     .video-banner {
       width: 100%;
-      aspect-ratio: 1280 / 520;
+      aspect-ratio: 1280 / 466;
       overflow: hidden;
       margin-top: 72px;
     }
@@ -110,9 +111,9 @@
     .video-banner video {
       width: 100%;
       height: 100%;
+      display: block;
       object-fit: cover;
       object-position: center;
-      display: block;
     }
 
     @media (max-width: 600px) {
@@ -121,13 +122,11 @@
       }
 
       .switch {
-        width: 32px;
-        height: 16px;
+        width: 32px; height: 16px;
       }
 
       .slider::before {
-        width: 12px;
-        height: 12px;
+        width: 12px; height: 12px;
         bottom: 2px; left: 2px;
       }
 
@@ -136,7 +135,7 @@
       }
 
       .video-banner {
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 16 / 9; /* más alto para móviles */
         margin-top: 56px;
       }
     }
@@ -181,7 +180,6 @@
       location.href = newPath;
     });
 
-    // 🎥 Pausar video fuera de vista
     const video = document.getElementById('introVideo');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -192,10 +190,8 @@
         }
       });
     }, { threshold: 0.1 });
-
     observer.observe(video);
 
-    // 🔁 Opacidad navbar según scroll
     window.addEventListener('scroll', () => {
       if (window.scrollY > 10) {
         navbar.classList.add('faded');
