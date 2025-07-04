@@ -17,23 +17,7 @@
       height: 100%;
       font-family: 'Montserrat', sans-serif;
       color: #fff;
-      overflow-x: hidden;
-    }
-
-    body {
-      background: transparent;
-    }
-
-    #bg-video {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      object-position: center;
-      z-index: -1;
-      pointer-events: none;
-      background: url("../assets/fondo1.png") repeat;
+      background: #111 url("../assets/fondo1.png") repeat;
       background-size: 64px 64px;
       image-rendering: pixelated;
     }
@@ -113,6 +97,23 @@
       margin-top: 0.3rem;
     }
 
+    .video-banner {
+      width: 100%;
+      aspect-ratio: 1280 / 520;
+      overflow: hidden;
+      position: relative;
+      z-index: 0;
+      margin-top: 72px;
+    }
+
+    .video-banner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
     @media (max-width: 600px) {
       .nav-title {
         display: none;
@@ -130,14 +131,14 @@
       input:checked + .slider::before {
         transform: translateX(16px);
       }
+
+      .video-banner {
+        aspect-ratio: 16 / 10;
+      }
     }
   </style>
 </head>
 <body>
-
-  <video id="bg-video" autoplay loop muted playsinline>
-    <source src="../assets/banner.mp4" type="video/mp4" />
-  </video>
 
   <nav class="navbar">
     <div class="nav-left">
@@ -153,6 +154,13 @@
     </div>
   </nav>
 
+  <section class="video-banner">
+    <video id="introVideo" autoplay loop muted playsinline>
+      <source src="../assets/banner.mp4" type="video/mp4" />
+      Tu navegador no soporta el video HTML5.
+    </video>
+  </section>
+
   <script>
     const langSwitch = document.getElementById('langSwitch');
     const langLabel = document.getElementById('langLabel');
@@ -167,6 +175,20 @@
       const newPath = location.pathname.replace(/\/(es|en)\//, '/' + targetLang + '/');
       location.href = newPath;
     });
+
+    // 🎯 Detener el video cuando no esté visible
+    const video = document.getElementById('introVideo');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(video);
   </script>
 
 </body>
