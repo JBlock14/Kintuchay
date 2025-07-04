@@ -14,10 +14,11 @@
     }
 
     html, body {
-      height: 100%;
       font-family: 'Montserrat', sans-serif;
+      background: #111 url("../assets/fondo1.png") repeat;
+      background-size: 64px 64px;
       color: #fff;
-      background-color: #111;
+      image-rendering: pixelated;
       overflow-x: hidden;
     }
 
@@ -25,12 +26,17 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 1);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar.faded {
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
     .nav-left {
@@ -115,11 +121,13 @@
       }
 
       .switch {
-        width: 32px; height: 16px;
+        width: 32px;
+        height: 16px;
       }
 
       .slider::before {
-        width: 12px; height: 12px;
+        width: 12px;
+        height: 12px;
         bottom: 2px; left: 2px;
       }
 
@@ -128,7 +136,8 @@
       }
 
       .video-banner {
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 9;
+        margin-top: 56px;
       }
     }
   </style>
@@ -159,8 +168,9 @@
   <script>
     const langSwitch = document.getElementById('langSwitch');
     const langLabel = document.getElementById('langLabel');
-
+    const navbar = document.querySelector('.navbar');
     const isEnglish = location.pathname.includes('/en/');
+
     langSwitch.checked = isEnglish;
     langLabel.textContent = isEnglish ? 'EN' : 'ES';
 
@@ -171,7 +181,7 @@
       location.href = newPath;
     });
 
-    // 🎯 Detener el video cuando no esté visible
+    // 🎥 Pausar video fuera de vista
     const video = document.getElementById('introVideo');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -184,6 +194,15 @@
     }, { threshold: 0.1 });
 
     observer.observe(video);
+
+    // 🔁 Opacidad navbar según scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('faded');
+      } else {
+        navbar.classList.remove('faded');
+      }
+    });
   </script>
 
 </body>
