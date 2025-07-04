@@ -13,23 +13,36 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      height: 100%;
       font-family: 'Montserrat', sans-serif;
-      background: #111 url("../assets/fondo1.png") repeat;
-      background-size: 64px 64px;
       color: #fff;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: transparent;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      z-index: -1;
+      pointer-events: none;
+      background: url("../assets/fondo1.png") repeat;
+      background-size: 64px 64px;
       image-rendering: pixelated;
-      padding-top: 72px; /* espacio para navbar fija */
     }
 
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
-      max-width: 100vw;
-      overflow-x: hidden;
-      background-color: rgba(0, 0, 0, 0.6); /* sin blur */
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -82,8 +95,10 @@
     .slider::before {
       content: "";
       position: absolute;
-      height: 18px; width: 18px;
-      left: 3px; bottom: 3px;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
       background-color: white;
       border-radius: 50%;
       transition: 0.4s;
@@ -98,48 +113,31 @@
       margin-top: 0.3rem;
     }
 
-    .video-banner {
-      width: 100%;
-      aspect-ratio: 1280 / 466;
-      overflow: hidden;
-    }
-
-    .video-banner video {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-    }
-
     @media (max-width: 600px) {
       .nav-title {
         display: none;
       }
 
       .switch {
-        width: 32px;
-        height: 16px;
+        width: 32px; height: 16px;
       }
 
       .slider::before {
-        width: 12px;
-        height: 12px;
-        bottom: 2px;
-        left: 2px;
+        width: 12px; height: 12px;
+        bottom: 2px; left: 2px;
       }
 
       input:checked + .slider::before {
         transform: translateX(16px);
       }
-
-      .video-banner {
-        aspect-ratio: 16 / 10; /* más alto en móvil */
-      }
     }
   </style>
 </head>
 <body>
+
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="../assets/banner.mp4" type="video/mp4" />
+  </video>
 
   <nav class="navbar">
     <div class="nav-left">
@@ -154,13 +152,6 @@
       <span class="lang-label" id="langLabel">ES</span>
     </div>
   </nav>
-
-  <section class="video-banner">
-    <video autoplay loop muted playsinline>
-      <source src="../assets/banner.mp4" type="video/mp4" />
-      Tu navegador no soporta el video HTML5.
-    </video>
-  </section>
 
   <script>
     const langSwitch = document.getElementById('langSwitch');
