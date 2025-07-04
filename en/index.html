@@ -17,8 +17,8 @@
       font-family: 'Montserrat', sans-serif;
       background: #111 url("../assets/fondo1.png") repeat;
       background-size: 64px 64px;
-      image-rendering: pixelated;
       color: #fff;
+      image-rendering: pixelated;
       overflow-x: hidden;
     }
 
@@ -115,6 +115,80 @@
       object-position: center;
     }
 
+    .boton-menu {
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      border-radius: 14px;
+      margin: 2rem auto;
+      max-width: 960px;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      backdrop-filter: blur(2px);
+    }
+
+    .boton-menu:hover {
+      transform: scale(1.01);
+    }
+
+    .boton-menu.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .boton-img {
+      flex: 1;
+      min-height: 220px;
+    }
+
+    .boton-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .boton-texto {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #7a1e1e;
+    }
+
+    .boton-texto h3 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .boton-texto p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .boton-texto p strong {
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .boton-menu,
+      .boton-menu.reverse {
+        flex-direction: column;
+      }
+
+      .boton-img {
+        height: 200px;
+      }
+
+      .boton-texto {
+        text-align: center;
+        padding: 1.5rem;
+      }
+    }
+
     @media (max-width: 600px) {
       .nav-title {
         display: none;
@@ -162,27 +236,27 @@
       Your browser does not support HTML5 video.
     </video>
   </section>
-  <section class="flyer">
-    <img src="../assets/comidas.png" alt="Peruvian food" />
-    <div class="flyer-content">
-      <h2 class="flyer-title">Food Menu</h2>
-      <p class="flyer-description">
-        <strong>(Discover the authentic flavors of Peru and beyond.)</strong><br><br>
-        Our menu is crafted to delight you with the best of Peruvian cuisine—from traditional dishes rich in history to modern creations that awaken the senses.
-      </p>
+  <div class="boton-menu">
+    <div class="boton-img">
+      <img src="../assets/comidas.png" alt="Food" />
     </div>
-  </section>
+    <div class="boton-texto">
+      <h3>Food Menu</h3>
+      <p><strong>(Discover the authentic flavors of Peru and beyond.)</strong><br>
+      Our menu is crafted to delight you with the best of Peruvian cuisine—from traditional dishes rich in history to modern creations that awaken the senses.</p>
+    </div>
+  </div>
 
-  <section class="flyer reverse">
-    <img src="../assets/bebidas.png" alt="Peruvian beverages" />
-    <div class="flyer-content">
-      <h2 class="flyer-title">Drink Menu</h2>
-      <p class="flyer-description">
-        <strong>(Refresh your senses with our selection of drinks and cocktails.)</strong><br><br>
-        From traditional Peruvian juices to exotic and reimagined classic cocktails, our drink menu is designed for every occasion. Fresh ingredients, unique combinations, and a curated experience that perfectly complements each dish.
-      </p>
+  <div class="boton-menu reverse">
+    <div class="boton-img">
+      <img src="../assets/bebidas.png" alt="Drinks" />
     </div>
-  </section>
+    <div class="boton-texto">
+      <h3>Drink Menu</h3>
+      <p><strong>(Refresh your senses with our selection of drinks and cocktails.)</strong><br>
+      From natural and traditional Peruvian juices to exotic and reimagined classic cocktails, our drink menu is designed for every occasion. Fresh ingredients, unique combinations, and an experience that perfectly complements every dish.</p>
+    </div>
+  </div>
 
   <script>
     const langSwitch = document.getElementById('langSwitch');
@@ -200,7 +274,6 @@
       location.href = newPath;
     });
 
-    // 🎥 Pause video when it's not visible
     const video = document.getElementById('introVideo');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -213,7 +286,6 @@
     }, { threshold: 0.1 });
     observer.observe(video);
 
-    // 📌 Adjust navbar opacity on scroll
     window.addEventListener('scroll', () => {
       if (window.scrollY > 10) {
         navbar.classList.add('faded');
