@@ -19,7 +19,7 @@
       background-size: 64px 64px;
       color: #fff;
       image-rendering: pixelated;
-      padding-top: 72px;
+      padding-top: 72px; /* espacio para navbar fija */
     }
 
     .navbar {
@@ -29,14 +29,12 @@
       width: 100%;
       max-width: 100vw;
       overflow-x: hidden;
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(3px);
+      background-color: rgba(0, 0, 0, 0.6); /* sin blur */
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      box-sizing: border-box;
     }
 
     .nav-left {
@@ -84,10 +82,8 @@
     .slider::before {
       content: "";
       position: absolute;
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
+      height: 18px; width: 18px;
+      left: 3px; bottom: 3px;
       background-color: white;
       border-radius: 50%;
       transition: 0.4s;
@@ -138,7 +134,7 @@
       }
 
       .video-banner {
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 10; /* más alto en móvil */
       }
     }
   </style>
