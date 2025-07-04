@@ -77,7 +77,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background-color: rgba(0, 0, 0, 0.0.5);
+      background-color: rgba(0, 0, 0, 0.5);
       position: relative;
       z-index: 10;
     }
@@ -180,10 +180,11 @@
     audio.play().catch(() => {}); // Por si el navegador bloquea autoplay
   }
 
-  function nextTrack() {
-    currentIndex = (currentIndex + 1) % tracks.length;
-    playCurrentTrack();
-  }
+  function playCurrentTrack() {
+  audio.src = tracks[currentIndex];
+  audio.volume = 0.5; // volumen al 50%
+  audio.play().catch(() => {});
+}
 
   audio.addEventListener('ended', nextTrack);
 
