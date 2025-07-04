@@ -162,3 +162,66 @@
       Your browser does not support HTML5 video.
     </video>
   </section>
+  <section class="flyer">
+    <img src="../assets/comidas.png" alt="Peruvian food" />
+    <div class="flyer-content">
+      <h2 class="flyer-title">Food Menu</h2>
+      <p class="flyer-description">
+        <strong>(Discover the authentic flavors of Peru and beyond.)</strong><br><br>
+        Our menu is crafted to delight you with the best of Peruvian cuisine—from traditional dishes rich in history to modern creations that awaken the senses.
+      </p>
+    </div>
+  </section>
+
+  <section class="flyer reverse">
+    <img src="../assets/bebidas.png" alt="Peruvian beverages" />
+    <div class="flyer-content">
+      <h2 class="flyer-title">Drink Menu</h2>
+      <p class="flyer-description">
+        <strong>(Refresh your senses with our selection of drinks and cocktails.)</strong><br><br>
+        From traditional Peruvian juices to exotic and reimagined classic cocktails, our drink menu is designed for every occasion. Fresh ingredients, unique combinations, and a curated experience that perfectly complements each dish.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const langSwitch = document.getElementById('langSwitch');
+    const langLabel = document.getElementById('langLabel');
+    const navbar = document.querySelector('.navbar');
+    const isEnglish = location.pathname.includes('/en/');
+
+    langSwitch.checked = isEnglish;
+    langLabel.textContent = isEnglish ? 'EN' : 'ES';
+
+    langSwitch.addEventListener('change', () => {
+      const targetLang = langSwitch.checked ? 'en' : 'es';
+      langLabel.textContent = langSwitch.checked ? 'EN' : 'ES';
+      const newPath = location.pathname.replace(/\/(es|en)\//, '/' + targetLang + '/');
+      location.href = newPath;
+    });
+
+    // 🎥 Pause video when it's not visible
+    const video = document.getElementById('introVideo');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(video);
+
+    // 📌 Adjust navbar opacity on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('faded');
+      } else {
+        navbar.classList.remove('faded');
+      }
+    });
+  </script>
+
+</body>
+</html>
