@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kintuchay</title>
+  <link rel="icon" href="../assets/logo1.png" type="image/png" />
+
+  <!-- Fuente elegante, moderna y gruesa desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #ffffff;
+      --bg: #111111;
+      --font: 'Montserrat', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--accent);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000;
+      position: relative;
+      z-index: 10;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-left img {
+      height: 32px;
+    }
+
+    .nav-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .lang-icon {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .lang-icon img {
+      height: 24px;
+    }
+
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      background: #222;
+      border: 1px solid #444;
+      padding: 0.5rem;
+      flex-direction: column;
+    }
+
+    .lang-menu button {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .nav-title {
+        display: none;
+      }
+
+      .lang-btn {
+        display: none;
+      }
+
+      .lang-icon {
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="../assets/logo1.png" alt="Logo Kintuchay" />
+      <span class="nav-title">Kintuchay</span>
+    </div>
+    <div class="nav-right">
+      <button class="lang-btn">ES</button>
+      <button class="lang-btn">EN</button>
+      <button class="lang-icon" onclick="toggleLangMenu()">
+        <img src="../assets/lang.png" alt="Seleccionar idioma" />
+      </button>
+      <div id="langMenu" class="lang-menu">
+        <button class="lang-btn">ES</button>
+        <button class="lang-btn">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    function toggleLangMenu() {
+      const menu = document.getElementById("langMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+
+</body>
+</html>
