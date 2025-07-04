@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kintuchay</title>
+  <link rel="icon" href="assets/logo1.png" type="image/png" />
   <style>
     html, body {
       margin: 0;
@@ -11,22 +12,29 @@
       background: #000;
       overflow: hidden;
     }
-    video {
+    .video-wrapper {
       position: fixed;
-      top: 50%;
-      left: 50%;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      clip-path: inset(0); /* Puedes ajustar aquí si quieres bordes recortados */
+    }
+    video {
       width: 100vw;
       height: 100vh;
       object-fit: cover;
       object-position: center;
-      transform: translate(-50%, -50%);
     }
   </style>
 </head>
 <body>
-  <video autoplay muted playsinline onended="location.href='web.html'">
-    <source src="assets/intro.webm" type="video/webm" />
-    <source src="assets/intro.mp4" type="video/mp4" />
-  </video>
+  <div class="video-wrapper">
+    <video autoplay muted playsinline onended="location.href='web.html'">
+      <source src="assets/intro.webm" type="video/webm" />
+      <source src="assets/intro.mp4" type="video/mp4" />
+    </video>
+  </div>
 </body>
 </html>
