@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kintuchay</title>
+  <link rel="icon" href="assets/logo1.png" type="image/png" />
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100dvh;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <video id="intro" autoplay muted playsinline>
+    <source src="assets/intro.webm" type="video/webm" />
+    <source src="assets/intro.mp4" type="video/mp4" />
+  </video>
+
+  <script>
+    const introVideo = document.getElementById('intro');
+
+    function getIdioma() {
+      const lang = navigator.language || navigator.userLanguage || "es";
+      return lang.toLowerCase().startsWith("en") ? "en" : "es";
+    }
+
+    introVideo.addEventListener('ended', () => {
+      const idioma = getIdioma();
+      location.href = `${idioma}/`;
+    });
+  </script>
+</body>
+</html>
