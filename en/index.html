@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kintuchay</title>
   <link rel="icon" href="../assets/logo1.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -24,8 +24,7 @@
 
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       background-color: rgba(0, 0, 0, 1);
       padding: 1rem 2rem;
@@ -86,8 +85,7 @@
       content: "";
       position: absolute;
       height: 18px; width: 18px;
-      left: 3px;
-      bottom: 3px;
+      left: 3px; bottom: 3px;
       background-color: white;
       border-radius: 50%;
       transition: 0.4s;
@@ -123,15 +121,12 @@
       }
 
       .switch {
-        width: 32px;
-        height: 16px;
+        width: 32px; height: 16px;
       }
 
       .slider::before {
-        width: 12px;
-        height: 12px;
-        bottom: 2px;
-        left: 2px;
+        width: 12px; height: 12px;
+        bottom: 2px; left: 2px;
       }
 
       input:checked + .slider::before {
@@ -167,43 +162,3 @@
       Your browser does not support HTML5 video.
     </video>
   </section>
-
-  <script>
-    const langSwitch = document.getElementById('langSwitch');
-    const langLabel = document.getElementById('langLabel');
-    const navbar = document.querySelector('.navbar');
-    const isEnglish = location.pathname.includes('/en/');
-
-    langSwitch.checked = isEnglish;
-    langLabel.textContent = isEnglish ? 'EN' : 'ES';
-
-    langSwitch.addEventListener('change', () => {
-      const targetLang = langSwitch.checked ? 'en' : 'es';
-      langLabel.textContent = langSwitch.checked ? 'EN' : 'ES';
-      const newPath = location.pathname.replace(/\/(es|en)\//, '/' + targetLang + '/');
-      location.href = newPath;
-    });
-
-    const video = document.getElementById('introVideo');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(video);
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        navbar.classList.add('faded');
-      } else {
-        navbar.classList.remove('faded');
-      }
-    });
-  </script>
-
-</body>
-</html>
