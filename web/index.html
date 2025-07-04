@@ -21,46 +21,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-    #musicToggle {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro 50% */
-  border-radius: 50%;
-  padding: 0.6rem;
-  border: none;
-  cursor: pointer;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  transition: background 0.2s ease;
-}
-
-#musicToggle:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-#musicToggle img {
-  height: 42px;
-  width: 42px;
-  pointer-events: none;
-}
-
-/* Versión móvil más compacta */
-@media (max-width: 600px) {
-  #musicToggle {
-    padding: 0.4rem;
-  }
-
-  #musicToggle img {
-    height: 32px;
-    width: 32px;
-  }
-}
-
-
 
     body {
       font-family: var(--font);
@@ -77,7 +37,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.5); /* 50% transparencia */
       position: relative;
       z-index: 10;
     }
@@ -139,6 +99,34 @@
       margin-bottom: 0.3rem;
     }
 
+    /* Botón flotante de música */
+    #musicToggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      padding: 0.6rem;
+      border: none;
+      cursor: pointer;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      transition: background 0.2s ease;
+    }
+
+    #musicToggle:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    #musicToggle img {
+      height: 42px;
+      width: 42px;
+      pointer-events: none;
+    }
+
     /* Responsive */
     @media (max-width: 600px) {
       .nav-title {
@@ -152,50 +140,21 @@
       .lang-icon {
         display: inline-block;
       }
+
+      #musicToggle {
+        padding: 0.4rem;
+      }
+
+      #musicToggle img {
+        height: 32px;
+        width: 32px;
+      }
     }
   </style>
 </head>
 <body>
-<!-- Botón flotante -->
-<button id="musicToggle" onclick="nextTrack()">
-  <img id="musicIcon" src="../assets/music/play.png" alt="Play music" />
-</button>
 
-<!-- Audio oculto -->
-<audio id="bgAudio" preload="auto"></audio>
-
-<script>
-  const tracks = [
-    '../assets/music/1.mp3',
-    '../assets/music/2.mp3',
-    '../assets/music/3.mp3'
-  ];
-  
-  let currentIndex = Math.floor(Math.random() * tracks.length);
-  const audio = document.getElementById('bgAudio');
-  const icon = document.getElementById('musicIcon');
-
-  function playCurrentTrack() {
-    audio.src = tracks[currentIndex];
-    audio.play().catch(() => {}); // Por si el navegador bloquea autoplay
-  }
-
-  function playCurrentTrack() {
-  audio.src = tracks[currentIndex];
-  audio.volume = 0.5; // volumen al 50%
-  audio.play().catch(() => {});
-}
-
-  audio.addEventListener('ended', nextTrack);
-
-  // Autoplay al cargar
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('musicToggle').click();
-    }, 500); // pequeño delay para asegurar carga
-  });
-</script>
-  
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-left">
       <img src="../assets/logo1.png" alt="Logo Kintuchay" />
@@ -214,11 +173,48 @@
     </div>
   </nav>
 
+  <!-- BOTÓN MÚSICA + AUDIO -->
+  <button id="musicToggle" onclick="nextTrack()">
+    <img id="musicIcon" src="../assets/music/play.png" alt="Play music" />
+  </button>
+  <audio id="bgAudio" preload="auto"></audio>
+
   <script>
+    // Idioma desplegable en móviles
     function toggleLangMenu() {
       const menu = document.getElementById("langMenu");
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
+
+    // Audio
+    const tracks = [
+      '../assets/music/1.mp3',
+      '../assets/music/2.mp3',
+      '../assets/music/3.mp3'
+    ];
+
+    let currentIndex = Math.floor(Math.random() * tracks.length);
+    const audio = document.getElementById('bgAudio');
+
+    function playCurrentTrack() {
+      audio.src = tracks[currentIndex];
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+    }
+
+    function nextTrack() {
+      currentIndex = (currentIndex + 1) % tracks.length;
+      playCurrentTrack();
+    }
+
+    audio.addEventListener('ended', nextTrack);
+
+    // Autoplay al cargar
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('musicToggle').click();
+      }, 500);
+    });
   </script>
 
 </body>
