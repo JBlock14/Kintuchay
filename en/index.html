@@ -51,6 +51,7 @@
 
     .nav-title {
       font-size: 1.2rem;
+      color: #fff;
     }
 
     .lang-toggle {
@@ -98,6 +99,7 @@
     .lang-label {
       font-size: 0.7rem;
       margin-top: 0.3rem;
+      color: #fff;
     }
 
     .video-banner {
@@ -122,10 +124,9 @@
       border-radius: 14px;
       margin: 2rem auto;
       max-width: 960px;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(0, 0, 0, 0.3); /* black with 30% transparency */
       cursor: pointer;
       transition: transform 0.2s ease;
-      backdrop-filter: blur(2px);
       text-decoration: none;
     }
 
@@ -155,7 +156,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      color: #7a1e1e;
+      color: #e2cfcf;
     }
 
     .boton-texto h3 {
@@ -173,7 +174,6 @@
     .boton-texto p strong {
       font-weight: bold;
     }
-
     @media (max-width: 768px) {
       .boton-menu,
       .boton-menu.reverse {
@@ -188,35 +188,19 @@
         text-align: center;
         padding: 1.5rem;
       }
-    }
 
-    @media (max-width: 600px) {
-      .nav-title {
-        display: none;
+      .footer-columns {
+        flex-direction: column;
+        text-align: center;
       }
 
-      .switch {
-        width: 32px;
-        height: 16px;
-      }
-
-      .slider::before {
-        width: 12px;
-        height: 12px;
-        bottom: 2px;
-        left: 2px;
-      }
-
-      input:checked + .slider::before {
-        transform: translateX(16px);
-      }
-
-      .video-banner {
-        aspect-ratio: 16 / 9;
-        margin-top: 56px;
+      .footer-col.contacto {
+        margin-left: 0;
+        text-align: center;
+        padding-right: 0;
       }
     }
-</style>
+  </style>
 </head>
 <body>
 
@@ -259,7 +243,7 @@
     <div class="boton-texto">
       <h3>Drink Menu</h3>
       <p><strong>(Refresh your senses with our selection of drinks and cocktails.)</strong><br>
-      From natural and traditional Peruvian juices to exotic and reimagined classic cocktails, our drink menu is designed for every occasion. Fresh ingredients, unique combinations, and an experience that perfectly complements each dish.</p>
+      From natural and traditional Peruvian juices to exotic and reimagined classic cocktails, our drink menu is designed for every occasion. Fresh ingredients, unique combinations, and a perfect complement to every dish.</p>
     </div>
   </a>
 
@@ -274,19 +258,16 @@
         <h4>SOCIAL:</h4>
         <a href="https://www.facebook.com/kintuchay.restobar.5?locale=es_LA" target="_blank">
           <img src="../assets/facebook.png" alt="Facebook" />
-          Facebook
-        </a><br />
+        </a>
         <a href="https://www.instagram.com/kintuchay_restobar/" target="_blank">
           <img src="../assets/instagram.png" alt="Instagram" />
-          Instagram
-        </a><br />
+        </a>
         <a href="https://www.tripadvisor.com.pe/Restaurant_Review-g294314-d23463209-Reviews-Kintuchay-Cusco_Cusco_Region.html" target="_blank">
           <img src="../assets/tripadvisor.png" alt="Tripadvisor" />
-          Tripadvisor
         </a>
       </div>
 
-      <div class="footer-col">
+      <div class="footer-col contacto">
         <h4>CONTACT US:</h4>
         <p>916 669 799<br>993 489 932</p>
         <h5>EMAIL:</h5>
@@ -329,23 +310,16 @@
     observer.observe(video);
 
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        navbar.classList.add('faded');
-      } else {
-        navbar.classList.remove('faded');
-      }
+      navbar.classList.toggle('faded', window.scrollY > 10);
     });
 
     const logo = document.querySelector('.footer-logo');
     const observerLogo = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          logo.style.transform = 'rotate(360deg)';
-        } else {
-          logo.style.transform = 'rotate(0deg)';
-        }
+        logo.style.transform = entry.isIntersecting ? 'rotate(360deg)' : 'rotate(0deg)';
       });
     }, { threshold: 0.6 });
+
     if (logo) observerLogo.observe(logo);
   </script>
 
