@@ -84,8 +84,7 @@
     .slider::before {
       content: "";
       position: absolute;
-      height: 18px;
-      width: 18px;
+      height: 18px; width: 18px;
       left: 3px; bottom: 3px;
       background-color: white;
       border-radius: 50%;
@@ -202,8 +201,10 @@
       }
 
       .slider::before {
-        width: 12px; height: 12px;
-        bottom: 2px; left: 2px;
+        width: 12px;
+        height: 12px;
+        bottom: 2px;
+        left: 2px;
       }
 
       input:checked + .slider::before {
@@ -215,7 +216,7 @@
         margin-top: 56px;
       }
     }
-  </style>
+</style>
 </head>
 <body>
 
@@ -239,6 +240,7 @@
       Your browser does not support HTML5 video.
     </video>
   </section>
+
   <a href="https://drive.google.com/file/d/1YDJSx_JLciL6WH_tL8t42oVcQmp1gWI2/view?usp=drive_link" target="_blank" class="boton-menu">
     <div class="boton-img">
       <img src="../assets/comidas.png" alt="Food" />
@@ -260,6 +262,43 @@
       From natural and traditional Peruvian juices to exotic and reimagined classic cocktails, our drink menu is designed for every occasion. Fresh ingredients, unique combinations, and an experience that perfectly complements each dish.</p>
     </div>
   </a>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <img src="../assets/logo1.png" alt="Kintuchay Logo" class="footer-logo" />
+      <h2 class="footer-title">KINTUCHAY</h2>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>SOCIAL:</h4>
+        <a href="https://www.facebook.com/kintuchay.restobar.5?locale=es_LA" target="_blank">
+          <img src="../assets/facebook.png" alt="Facebook" />
+          Facebook
+        </a><br />
+        <a href="https://www.instagram.com/kintuchay_restobar/" target="_blank">
+          <img src="../assets/instagram.png" alt="Instagram" />
+          Instagram
+        </a><br />
+        <a href="https://www.tripadvisor.com.pe/Restaurant_Review-g294314-d23463209-Reviews-Kintuchay-Cusco_Cusco_Region.html" target="_blank">
+          <img src="../assets/tripadvisor.png" alt="Tripadvisor" />
+          Tripadvisor
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4>CONTACT US:</h4>
+        <p>916 669 799<br>993 489 932</p>
+        <h5>EMAIL:</h5>
+        <p>kintuchayrestobar@Gmail.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Kiskapata Street No. 287 – Ref: San Blas Viewpoint, Cusco – Peru</p>
+      <p class="footer-slogan">Flavors that captivate,<br>experiences that endure!</p>
+    </div>
+  </footer>
 
   <script>
     const langSwitch = document.getElementById('langSwitch');
@@ -296,6 +335,18 @@
         navbar.classList.remove('faded');
       }
     });
+
+    const logo = document.querySelector('.footer-logo');
+    const observerLogo = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          logo.style.transform = 'rotate(360deg)';
+        } else {
+          logo.style.transform = 'rotate(0deg)';
+        }
+      });
+    }, { threshold: 0.6 });
+    if (logo) observerLogo.observe(logo);
   </script>
 
 </body>
