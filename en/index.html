@@ -174,3 +174,239 @@
     .boton-texto p strong {
       font-weight: bold;
     }
+    @media (max-width: 768px) {
+      .boton-menu,
+      .boton-menu.reverse {
+        flex-direction: column;
+      }
+
+      .boton-img {
+        height: 200px;
+      }
+
+      .boton-texto {
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-col.contacto {
+        margin-left: 0;
+        text-align: center;
+        padding-right: 0;
+      }
+    }
+
+    /* 🔧 Estilos del FOOTER */
+    .footer {
+      background-color: #000;
+      color: #fff;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      border-top: 2px solid #7a1e1e;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo {
+      width: 64px;
+      margin-bottom: 0.5rem;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .footer-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #fff;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col {
+      min-width: 220px;
+    }
+
+    .footer-col.contacto {
+      margin-left: auto;
+      text-align: right;
+      padding-right: 1rem;
+    }
+
+    .footer-col h4,
+    .footer-col h5 {
+      color: #7a1e1e;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-col p {
+      color: #fff;
+      margin: 0.2rem 0;
+    }
+
+    .footer-col a {
+      display: inline-block;
+      margin: 0.3rem;
+      transition: transform 0.2s;
+    }
+
+    .footer-col a:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-col img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    .footer-slogan {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      color: #7a1e1e;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="../assets/logo1.png" alt="Kintuchay" />
+      <span class="nav-title">Kintuchay</span>
+    </div>
+    <div class="lang-toggle">
+      <label class="switch">
+        <input type="checkbox" id="langSwitch" />
+        <span class="slider"></span>
+      </label>
+      <span class="lang-label" id="langLabel">ES</span>
+    </div>
+  </nav>
+
+  <section class="video-banner">
+    <video id="introVideo" autoplay loop muted playsinline>
+      <source src="../assets/banner.mp4" type="video/mp4" />
+      Tu navegador no soporta el video HTML5.
+    </video>
+  </section>
+
+  <a href="https://drive.google.com/file/d/1k5B8BmsD7r6IoIddNX_4i9kOGtJl8eXQ/view?usp=sharing" target="_blank" class="boton-menu">
+    <div class="boton-img">
+      <img src="../assets/comidas.png" alt="Comidas" />
+    </div>
+    <div class="boton-texto">
+      <h3>Menú de Comidas</h3>
+      <p><strong>(Descubre el sabor auténtico del Perú y más allá.)</strong><br>
+      Nuestro menú está diseñado para deleitarte con lo mejor de la gastronomía peruana, desde platos tradicionales llenos de historia hasta creaciones modernas que despiertan los sentidos.</p>
+    </div>
+  </a>
+
+  <a href="https://drive.google.com/file/d/1Ffr_po-ENgasStmfi6zCNO5ISAQK7xss/view?usp=drive_link" target="_blank" class="boton-menu reverse">
+    <div class="boton-img">
+      <img src="../assets/bebidas.png" alt="Bebidas" />
+    </div>
+    <div class="boton-texto">
+      <h3>Menú de Bebidas</h3>
+      <p><strong>(Refresca tus sentidos con nuestra selección de bebidas y cócteles.)</strong><br>
+      Desde jugos naturales y tradicionales peruanos hasta cócteles exóticos y clásicos reinventados, nuestro menú de bebidas está pensado para cada ocasión. Ingredientes frescos, combinaciones únicas y una experiencia que acompaña a la perfección cada plato.</p>
+    </div>
+  </a>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <img src="../assets/logo1.png" alt="Logo de Kintuchay" class="footer-logo" />
+      <h2 class="footer-title">KINTUCHAY</h2>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>REDES:</h4>
+        <a href="https://www.facebook.com/kintuchay.restobar.5?locale=es_LA" target="_blank">
+          <img src="../assets/facebook.png" alt="Facebook" />
+        </a>
+        <a href="https://www.instagram.com/kintuchay_restobar/" target="_blank">
+          <img src="../assets/instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://www.tripadvisor.com.pe/Restaurant_Review-g294314-d23463209-Reviews-Kintuchay-Cusco_Cusco_Region.html" target="_blank">
+          <img src="../assets/tripadvisor.png" alt="Tripadvisor" />
+        </a>
+      </div>
+
+      <div class="footer-col contacto">
+        <h4>CONTÁCTANOS:</h4>
+        <p>916 669 799<br>993 489 932</p>
+        <h5>GMAIL:</h5>
+        <p>kintuchayrestobar@Gmail.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Calle Kiskapata N°287 Ref: Mirador San Blas, Cusco - Perú</p>
+      <p class="footer-slogan">¡Sabores que cautivan,<br>experiencias que perduran!</p>
+    </div>
+  </footer>
+
+  <script>
+    const langSwitch = document.getElementById('langSwitch');
+    const langLabel = document.getElementById('langLabel');
+    const navbar = document.querySelector('.navbar');
+    const isEnglish = location.pathname.includes('/en/');
+
+    langSwitch.checked = isEnglish;
+    langLabel.textContent = isEnglish ? 'EN' : 'ES';
+
+    langSwitch.addEventListener('change', () => {
+      const targetLang = langSwitch.checked ? 'en' : 'es';
+      langLabel.textContent = langSwitch.checked ? 'EN' : 'ES';
+      const newPath = location.pathname.replace(/\/(es|en)\//, '/' + targetLang + '/');
+      location.href = newPath;
+    });
+
+    const video = document.getElementById('introVideo');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.isIntersecting ? video.play() : video.pause();
+      });
+    }, { threshold: 0.1 });
+    observer.observe(video);
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('faded', window.scrollY > 10);
+    });
+
+    const logo = document.querySelector('.footer-logo');
+    const observerLogo = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        logo.style.transform = entry.isIntersecting ? 'rotate(360deg)' : 'rotate(0deg)';
+      });
+    }, { threshold: 0.6 });
+    if (logo) observerLogo.observe(logo);
+  </script>
+
+</body>
+</html>
