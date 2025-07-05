@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -124,7 +124,7 @@
       border-radius: 14px;
       margin: 2rem auto;
       max-width: 960px;
-      background-color: rgba(0, 0, 0, 0.3); /* black with 30% transparency */
+      background-color: rgba(0, 0, 0, 0.3);
       cursor: pointer;
       transition: transform 0.2s ease;
       text-decoration: none;
@@ -156,7 +156,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      color: #e2cfcf;
+      color: #7a1e1e;
     }
 
     .boton-texto h3 {
@@ -174,154 +174,3 @@
     .boton-texto p strong {
       font-weight: bold;
     }
-    @media (max-width: 768px) {
-      .boton-menu,
-      .boton-menu.reverse {
-        flex-direction: column;
-      }
-
-      .boton-img {
-        height: 200px;
-      }
-
-      .boton-texto {
-        text-align: center;
-        padding: 1.5rem;
-      }
-
-      .footer-columns {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-col.contacto {
-        margin-left: 0;
-        text-align: center;
-        padding-right: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <nav class="navbar">
-    <div class="nav-left">
-      <img src="../assets/logo1.png" alt="Kintuchay" />
-      <span class="nav-title">Kintuchay</span>
-    </div>
-    <div class="lang-toggle">
-      <label class="switch">
-        <input type="checkbox" id="langSwitch" />
-        <span class="slider"></span>
-      </label>
-      <span class="lang-label" id="langLabel">EN</span>
-    </div>
-  </nav>
-
-  <section class="video-banner">
-    <video id="introVideo" autoplay loop muted playsinline>
-      <source src="../assets/banner.mp4" type="video/mp4" />
-      Your browser does not support HTML5 video.
-    </video>
-  </section>
-
-  <a href="https://drive.google.com/file/d/1YDJSx_JLciL6WH_tL8t42oVcQmp1gWI2/view?usp=drive_link" target="_blank" class="boton-menu">
-    <div class="boton-img">
-      <img src="../assets/comidas.png" alt="Food" />
-    </div>
-    <div class="boton-texto">
-      <h3>Food Menu</h3>
-      <p><strong>(Discover the authentic flavors of Peru and beyond.)</strong><br>
-      Our menu is crafted to delight you with the best of Peruvian cuisine—from traditional dishes rich in history to modern creations that awaken the senses.</p>
-    </div>
-  </a>
-
-  <a href="https://drive.google.com/file/d/1009_V-m3zXiDhSEOX5IO1qOyop08GKcG/view?usp=drive_link" target="_blank" class="boton-menu reverse">
-    <div class="boton-img">
-      <img src="../assets/bebidas.png" alt="Drinks" />
-    </div>
-    <div class="boton-texto">
-      <h3>Drink Menu</h3>
-      <p><strong>(Refresh your senses with our selection of drinks and cocktails.)</strong><br>
-      From natural and traditional Peruvian juices to exotic and reimagined classic cocktails, our drink menu is designed for every occasion. Fresh ingredients, unique combinations, and a perfect complement to every dish.</p>
-    </div>
-  </a>
-
-  <footer class="footer">
-    <div class="footer-top">
-      <img src="../assets/logo1.png" alt="Kintuchay Logo" class="footer-logo" />
-      <h2 class="footer-title">KINTUCHAY</h2>
-    </div>
-
-    <div class="footer-columns">
-      <div class="footer-col">
-        <h4>SOCIAL:</h4>
-        <a href="https://www.facebook.com/kintuchay.restobar.5?locale=es_LA" target="_blank">
-          <img src="../assets/facebook.png" alt="Facebook" />
-        </a>
-        <a href="https://www.instagram.com/kintuchay_restobar/" target="_blank">
-          <img src="../assets/instagram.png" alt="Instagram" />
-        </a>
-        <a href="https://www.tripadvisor.com.pe/Restaurant_Review-g294314-d23463209-Reviews-Kintuchay-Cusco_Cusco_Region.html" target="_blank">
-          <img src="../assets/tripadvisor.png" alt="Tripadvisor" />
-        </a>
-      </div>
-
-      <div class="footer-col contacto">
-        <h4>CONTACT US:</h4>
-        <p>916 669 799<br>993 489 932</p>
-        <h5>EMAIL:</h5>
-        <p>kintuchayrestobar@Gmail.com</p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>Kiskapata Street No. 287 – Ref: San Blas Viewpoint, Cusco – Peru</p>
-      <p class="footer-slogan">Flavors that captivate,<br>experiences that endure!</p>
-    </div>
-  </footer>
-
-  <script>
-    const langSwitch = document.getElementById('langSwitch');
-    const langLabel = document.getElementById('langLabel');
-    const navbar = document.querySelector('.navbar');
-    const isEnglish = location.pathname.includes('/en/');
-
-    langSwitch.checked = isEnglish;
-    langLabel.textContent = isEnglish ? 'EN' : 'ES';
-
-    langSwitch.addEventListener('change', () => {
-      const targetLang = langSwitch.checked ? 'en' : 'es';
-      langLabel.textContent = langSwitch.checked ? 'EN' : 'ES';
-      const newPath = location.pathname.replace(/\/(es|en)\//, '/' + targetLang + '/');
-      location.href = newPath;
-    });
-
-    const video = document.getElementById('introVideo');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(video);
-
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('faded', window.scrollY > 10);
-    });
-
-    const logo = document.querySelector('.footer-logo');
-    const observerLogo = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        logo.style.transform = entry.isIntersecting ? 'rotate(360deg)' : 'rotate(0deg)';
-      });
-    }, { threshold: 0.6 });
-
-    if (logo) observerLogo.observe(logo);
-  </script>
-
-</body>
-</html>
